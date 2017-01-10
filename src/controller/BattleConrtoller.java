@@ -10,6 +10,7 @@ package controller;
  * @author kate_
  */
 public interface BattleConrtoller {
-    void start();
-    void addWarrior();    
+    void start(String nameSq1, String nameSq2);
+    void addWarrior(String nameWarrior, int ind, String typeWarrior);    
+    String[] getTypeWarrior();
 }

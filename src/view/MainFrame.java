@@ -48,6 +48,7 @@ public class MainFrame extends JFrame implements BattleObserver {
     private BattleConrtoller controller;
 
     public MainFrame(BattleConrtoller controller, BattleModel model) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
+        super("Битва");
         this.model = model;
         this.controller = controller;
         model.registerObserver(this);
@@ -56,16 +57,23 @@ public class MainFrame extends JFrame implements BattleObserver {
     }
 
     @Override
-    public void updateInfo(StringBuilder output) {
-
+    public void updateResult(String output) {
+        start.setEnabled(false);
+        resultArea.setText(output);
     }
 
-    public void createView() throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
+    public void updateMessage(String msg, String errorMsg) {
+        message.setText(msg);
+        error.setText(errorMsg);
+    }
+
+    private void createView() throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
         setDefaultCloseOperation(3);
         UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         setLayout(new GridBagLayout());
         setPreferredSize(new Dimension(620, 600));
         initComponents();
+        setVisible(true);
     }
 
     private void initComponents() {
@@ -77,14 +85,13 @@ public class MainFrame extends JFrame implements BattleObserver {
         panel.setLayout(new GridBagLayout());
         selectSquad = new JComboBox(new String[]{"№1", "№2"});
         nameWarrior = new MyTextField();
-//        selectClassWarrior = new JComboBox(typesWarriorToString(typeWarrior).toArray());
+        selectClassWarrior = new JComboBox(controller.getTypeWarrior());
         addWarrior = new JButton("Добавить");
         resultArea = new JTextArea(10, 10);
         resultArea.setFont(new Font(null, Font.PLAIN, 14));
         start = new JButton("Старт");
         save = new JButton("Сохранить в файл");
         save.setEnabled(false);
-//        createListeners();
         message = new JLabel();
         message.setForeground(Color.green);
         error = new JLabel();
@@ -153,21 +160,17 @@ public class MainFrame extends JFrame implements BattleObserver {
         add(error, gridConstraints);
         pack();
     }
+    
+    private void createListeners() {
+        start.addActionListener(event -> controller.start(nameSquard1.getText(), nameSquard2.getText()));
+        addWarrior.addActionListener(event -> controller.addWarrior(nameWarrior.getText(), selectSquad.getSelectedIndex(), selectClassWarrior.getSelectedItem().toString()));
+    }
 
     private class MyTextField extends JTextField {
-
         public MyTextField() {
             super(10);
             setFont(new Font(null, Font.PLAIN, 14));
         }
     }
 
-    private void createListeners() {
-        startMenuItem.addActionListener(event -> controller.start());
-        stopMenuItem.addActionListener(event -> controller.stop());
-        exit.addActionListener(event -> System.exit(0));
-        setBPMButton.addActionListener(event -> controller.setBPM(bpmTextField.getText()));
-        increaseBPMButton.addActionListener(event -> controller.increaseBPM());
-        decreaseBPMButton.addActionListener(event -> controller.decreaseBPM());
-    }
 }

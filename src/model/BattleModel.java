@@ -13,7 +13,7 @@ import view.BattleObserver;
  */
 public interface BattleModel {
 
-    void initialization();
+    String[] getTypeWarrior();
 
     void start(Squad sq1, Squad sq2);
 

@@ -17,7 +17,7 @@ public class WarriorCreator {
         return types;
     }  
 
-    public Warrior getWarrior(String type) {       
+    public Warrior getWarrior(String type) {    
         switch (type) {
             case ("Archer"):
                 return new Archer();

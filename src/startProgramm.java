@@ -1,4 +1,8 @@
 
+import controller.BattleConrtoller;
+import controller.BattleControllerImpl;
+import model.BattleModel;
+import model.BattleModelImpl;
 import view.MainFrame;
 
 /*
@@ -13,6 +17,8 @@ import view.MainFrame;
  */
 public class startProgramm {   
     public static void main(String[] args) throws Exception {       
-        new MainFrame().setVisible(true);
+//        new MainFrame().setVisible(true);
+        BattleModel battleModel=new BattleModelImpl();
+        BattleConrtoller controller=new BattleControllerImpl(battleModel);
     }
 }

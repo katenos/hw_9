@@ -10,5 +10,5 @@ package view;
  * @author kate_
  */
 public interface BattleObserver {
-    void updateInfo(StringBuilder output);
+    void updateResult(String output);
 }

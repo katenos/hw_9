@@ -15,18 +15,19 @@ import view.BattleObserver;
  */
 public class BattleModelImpl implements BattleModel {
 
-    private WarriorCreator warrior;
+    private WarriorCreator warrior= new WarriorCreator();
     private StringBuilder outputInfo;
     private List<BattleObserver> observers = new ArrayList<>();
 
     @Override
-    public void initialization() {
-        warrior.getTypes();
+    public String[] getTypeWarrior() {
+        return warrior.getTypes();
     }
 
     @Override
     public void start(Squad sq1, Squad sq2) {
         outputInfo = outputCreatbleInfo(sq1, sq2);
+        notifyObservers();
     }
 
     @Override
@@ -46,7 +47,7 @@ public class BattleModelImpl implements BattleModel {
 
     @Override
     public void notifyObservers() {
-        observers.forEach((battleObserver) -> battleObserver.updateInfo(outputInfo));
+        observers.forEach((battleObserver) -> battleObserver.updateResult(outputInfo.toString()));
     }
 
     public StringBuilder outputCreatbleInfo(Squad sq1, Squad sq2) {
