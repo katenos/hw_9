@@ -68,14 +68,14 @@ public class BattleModelImpl implements BattleModel {
         int i = 0;
         String nameWinner = "";
         while (nameWinner.equals("")) {
-            strBResult.append("\nРаунд " + (++i));
+            strBResult.append("\nРаунд " + (++i)); //конкатенация строк в цикле
             strBResult.append(attackRound(ot1, ot2));
             d.skipTime();
             if (!ot2.hasAliveWarriors()) {
                 nameWinner = ot1.toString();
                 break;
             }
-            strBResult.append(attackRound(ot2, ot1));
+            strBResult.append(attackRound(ot2, ot1)); //дублирование кода
             d.skipTime();
             if (!ot1.hasAliveWarriors()) {
                 nameWinner = ot2.toString();

@@ -41,5 +41,5 @@ public abstract class Warrior implements Cloneable{
         return (Warrior) super.clone();
     }
     
-    public abstract String getTypeWarrior();
+    public abstract String getTypeWarrior();  //зачем этот метод?
 }

@@ -73,7 +73,7 @@ public class BattleControllerImpl implements BattleConrtoller {
 
     private String fieldsFill(String nameSq1, String nameSq2) {
         String error = "";
-        if (nameSq1.equals("")) {
+        if (nameSq1.equals("")) { //тут нужен switch
             error = "Введите имя первого отряда";
         }
         if (nameSq2.equals("")) {
@@ -83,7 +83,7 @@ public class BattleControllerImpl implements BattleConrtoller {
             error = "В первом отряде нет бойцов!";
         }
         if (sq2.getSquad().size() == 0) {
-            error = "Во втором отряде нет бойцов!";
+            error = "Во втором отряде нет бойцов!"; //если ничего не заполнено, будет показана только эта ошибка, а нужна либо первая, либо все
         }
         return error;
     }

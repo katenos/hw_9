@@ -15,7 +15,7 @@ import view.MainFrame;
  *
  * @author kate_
  */
-public class startProgramm {   
+public class startProgramm { //с заглавной буквы
     public static void main(String[] args) throws Exception {       
 //        new MainFrame().setVisible(true);
         BattleModel battleModel=new BattleModelImpl();

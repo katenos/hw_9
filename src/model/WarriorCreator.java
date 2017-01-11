@@ -10,8 +10,8 @@ package model;
  *
  * @author kate_
  */
-public class WarriorCreator {
-    private String [] types={"Viking", "Archer"};
+public class WarriorCreator { //у вас же был вариант с клонированием прототипов, и он был намного лучше
+    private String [] types={"Viking", "Archer"}; //сейчас при изменении классов бойцов придется менять это...
     
     public String[] getTypes(){   
         return types;
@@ -22,7 +22,7 @@ public class WarriorCreator {
             case ("Archer"):
                 return new Archer();
             case ("Viking"):
-                return new Viking();
+                return new Viking(); //...и переписывать эти кейсы. а в предыдущей реализации достаточно было изменить список прототипов и все
         }
         return null;
     }
