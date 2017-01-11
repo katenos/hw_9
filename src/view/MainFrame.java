@@ -44,7 +44,7 @@ public class MainFrame extends JFrame implements BattleObserver {
     private JLabel error;
     private JLabel message;
 
-    private BattleModel model;
+    private BattleModel model; //нет смысла хранить ссылку на модель
     private BattleConrtoller controller;
 
     public MainFrame(BattleConrtoller controller, BattleModel model) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
@@ -58,7 +58,7 @@ public class MainFrame extends JFrame implements BattleObserver {
 
     @Override
     public void updateResult(String output) {
-        start.setEnabled(false);
+        start.setEnabled(false); //отключение кнопки - это логика, которая в будущем может измениться, поэтому ее лучше размещать в контроллере
         resultArea.setText(output);
     }
 
