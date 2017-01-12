@@ -9,7 +9,7 @@ package model;
  *
  * @author kate_
  */
-public abstract class Warrior implements Cloneable{
+public abstract class Warrior{
 
     protected int health;
     protected int damage;
@@ -34,10 +34,5 @@ public abstract class Warrior implements Cloneable{
 
     public void setName(String name) {
         this.warriorName = name;
-    }
-
-    @Override
-    public Warrior clone() throws CloneNotSupportedException {       
-        return (Warrior) super.clone();
-    }    
+    } 
 }

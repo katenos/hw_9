@@ -12,7 +12,7 @@ import java.util.Random;
  *
  * @author kate_
  */
-public class Squad implements Cloneable {
+public class Squad{
 
     private String name;
     private ArrayList<Warrior> squad = new ArrayList<Warrior>();
@@ -59,17 +59,5 @@ public class Squad implements Cloneable {
     @Override
     public String toString() {
         return this.name;
-    }
-
-    @Override
-    public Squad clone() throws CloneNotSupportedException {
-        Squad clone = (Squad) super.clone();
-        ArrayList<Warrior> clonedSquad = new ArrayList<>();
-        for (Warrior warrior : squad) {
-            clonedSquad.add(warrior.clone());
-        }
-        clone.squad = clonedSquad;
-        clone.squad = (ArrayList<Warrior>) squad.clone(); //этот метод остался с самой первой битвы. Нужно удалять?
-        return clone;
     }
 }

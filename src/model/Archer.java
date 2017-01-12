@@ -10,7 +10,7 @@ package model;
  *
  * @author kate_
  */
-public class Archer extends Warrior implements  Cloneable {
+public class Archer extends Warrior{
 
     public Archer(String name) {
         this.health = 70;

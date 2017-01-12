@@ -41,7 +41,6 @@ public class MainFrame extends JFrame implements BattleObserver {
     private JTextArea resultArea;
     private JLabel error;
     private JLabel message;
-
   
     private BattleConrtoller controller;
 
@@ -169,5 +168,4 @@ public class MainFrame extends JFrame implements BattleObserver {
             setFont(new Font(null, Font.PLAIN, 14));
         }
     }
-
 }

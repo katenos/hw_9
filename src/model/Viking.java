@@ -9,7 +9,7 @@ package model;
  *
  * @author kate_
  */
-public class Viking extends Warrior implements  Cloneable {
+public class Viking extends Warrior{
 
     public Viking(String name) {        
         this.health = 100;
