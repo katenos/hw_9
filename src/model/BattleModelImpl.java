@@ -68,15 +68,14 @@ public class BattleModelImpl implements BattleModel {
         int i = 0;
         String nameWinner = "";
         while (nameWinner.equals("")) {
-            strBResult.append("\nРаунд " + (++i));
-            strBResult.append(attackRound(ot1, ot2));
-            d.skipTime();
+            strBResult.append("\nРаунд ").append(++i);
+            strBResult.append(attackRound(ot1, ot2, d));            
             if (!ot2.hasAliveWarriors()) {
                 nameWinner = ot1.toString();
                 break;
             }
-            strBResult.append(attackRound(ot2, ot1));
-            d.skipTime();
+            strBResult.append(attackRound(ot2, ot1, d));//это не такая же строка, выше сперва от1 потом от2, а здесь наоборот
+            //если вы про  d.skipTime(); то перенесла его в метод attackRound
             if (!ot1.hasAliveWarriors()) {
                 nameWinner = ot2.toString();
                 break;
@@ -87,12 +86,13 @@ public class BattleModelImpl implements BattleModel {
         return strBResult;
     }
 
-    private StringBuilder attackRound(Squad ot1, Squad ot2) {
+    private StringBuilder attackRound(Squad ot1, Squad ot2, DateHelper d) {
         Warrior w1 = ot1.getRandomWarrior();
         Warrior w2 = ot2.getRandomWarrior();
         StringBuilder strBResult = new StringBuilder();
         strBResult.append("\nБоец - ").append(w1.toString()).append(" атакует бойца\n       ").append(w2.toString());
         w2.takeDamage(w1.attack());
+        d.skipTime();
         return strBResult;
     }
 

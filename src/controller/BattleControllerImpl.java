@@ -5,9 +5,6 @@
  */
 package controller;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JComboBox;
 import javax.swing.UnsupportedLookAndFeelException;
 import model.BattleModel;
 import view.MainFrame;
@@ -72,20 +69,21 @@ public class BattleControllerImpl implements BattleConrtoller {
     }
 
     private String fieldsFill(String nameSq1, String nameSq2) {
-        String error = "";
+        StringBuilder error=new StringBuilder();
+        //зачем тут switch?
         if (nameSq1.equals("")) {
-            error = "Введите имя первого отряда";
+            error.append("Введите имя первого отряда. ");            
         }
         if (nameSq2.equals("")) {
-            error = "Введите имя второго отряда";
+             error.append("Введите имя второго отряда. ");
         }
         if (sq1.getSquad().size() == 0) {
-            error = "В первом отряде нет бойцов!";
+             error.append("В первом отряде нет бойцов! ");
         }
         if (sq2.getSquad().size() == 0) {
-            error = "Во втором отряде нет бойцов!";
+             error.append("Во втором отряде нет бойцов! ");
         }
-        return error;
+        return error.toString();
     }
 
 }

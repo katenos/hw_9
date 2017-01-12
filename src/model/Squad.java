@@ -69,7 +69,7 @@ public class Squad implements Cloneable {
             clonedSquad.add(warrior.clone());
         }
         clone.squad = clonedSquad;
-        clone.squad = (ArrayList<Warrior>) squad.clone();
+        clone.squad = (ArrayList<Warrior>) squad.clone(); //этот метод остался с самой первой битвы. Нужно удалять?
         return clone;
     }
 }

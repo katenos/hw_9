@@ -28,11 +28,5 @@ public class Viking extends Warrior implements  Cloneable {
         String str = "Викинг: имя " + this.warriorName + ", " + this.squadName + ", "
                 + "здоровье " + this.health + ", урон " + this.damage;
         return str;
-    }
-
-    @Override
-    public String getTypeWarrior() {
-        return "Viking";
-    }
-    
+    }    
 }

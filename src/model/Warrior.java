@@ -39,7 +39,5 @@ public abstract class Warrior implements Cloneable{
     @Override
     public Warrior clone() throws CloneNotSupportedException {       
         return (Warrior) super.clone();
-    }
-    
-    public abstract String getTypeWarrior();
+    }    
 }

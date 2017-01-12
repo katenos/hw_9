@@ -30,9 +30,4 @@ public class Archer extends Warrior implements  Cloneable {
                 + "здоровье " + this.health + ", урон " + this.damage;
         return str;
     }
-
-    @Override
-    public String getTypeWarrior() {
-        return "Archer";
-    }
 }
