@@ -29,7 +29,7 @@ public class BattleControllerImpl implements BattleConrtoller {
 
     @Override
     public void start(String nameSq1, String nameSq2) {
-        String noError = fieldsFill(nameSq1, nameSq1);       
+        String noError = fieldsFill(nameSq1, nameSq1); //nameSq2
         if (noError.equals("")) {
             view.updateMessage("", "");
             sq1.rename(nameSq1);
@@ -40,6 +40,7 @@ public class BattleControllerImpl implements BattleConrtoller {
         } else {
             view.updateMessage("", noError);
         }
+        //в этом же методе лучше попросить представление отключить кнопку start
     }
 
     @Override
@@ -71,6 +72,7 @@ public class BattleControllerImpl implements BattleConrtoller {
     private String fieldsFill(String nameSq1, String nameSq2) {
         StringBuilder error=new StringBuilder();
         //зачем тут switch?
+        //да, не нужен
         if (nameSq1.equals("")) {
             error.append("Введите имя первого отряда. ");            
         }

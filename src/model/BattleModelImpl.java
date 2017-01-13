@@ -76,6 +76,7 @@ public class BattleModelImpl implements BattleModel {
             }
             strBResult.append(attackRound(ot2, ot1, d));//это не такая же строка, выше сперва от1 потом от2, а здесь наоборот
             //если вы про  d.skipTime(); то перенесла его в метод attackRound
+            //имею в виду все эти строки. они отличаются только расположением ot1 и ot2. это можно вынести в отдельный метод и вызвать два раза, что-то вроде attack(ot1, ot2); attack(ot2, ot1)
             if (!ot1.hasAliveWarriors()) {
                 nameWinner = ot2.toString();
                 break;
