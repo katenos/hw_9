@@ -20,7 +20,7 @@ public class BattleControllerImpl implements BattleConrtoller {
     private MainFrame view;
     private Squad sq1, sq2;
     
-    public BattleControllerImpl(BattleModel model) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
+    public BattleControllerImpl(BattleModel model) throws InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException, ClassNotFoundException {
         this.model = model;
         view = new MainFrame(this, model);
         sq1 = new Squad("Отряд 1");
