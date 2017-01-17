@@ -6,7 +6,9 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import view.BattleObserver;
 
 /**
@@ -15,7 +17,7 @@ import view.BattleObserver;
  */
 public class BattleModelImpl implements BattleModel {
 
-    private WarriorCreator warrior= new WarriorCreator();
+    private WarriorCreator warrior = new WarriorCreator();
     private StringBuilder outputInfo;
     private List<BattleObserver> observers = new ArrayList<>();
 
@@ -66,19 +68,12 @@ public class BattleModelImpl implements BattleModel {
     private StringBuilder battle(Squad ot1, Squad ot2, DateHelper d) {
         StringBuilder strBResult = new StringBuilder();
         int i = 0;
-        String nameWinner = "";
-        while (nameWinner.equals("")) {
+        StringBuilder nameWinner = new StringBuilder();
+        while (nameWinner.toString().equals("")) {
             strBResult.append("\nРаунд ").append(++i);
-            strBResult.append(attackRound(ot1, ot2, d));            
-            if (!ot2.hasAliveWarriors()) {
-                nameWinner = ot1.toString();
-                break;
-            }
-            strBResult.append(attackRound(ot2, ot1, d));//это не такая же строка, выше сперва от1 потом от2, а здесь наоборот
-            //если вы про  d.skipTime(); то перенесла его в метод attackRound
-            if (!ot1.hasAliveWarriors()) {
-                nameWinner = ot2.toString();
-                break;
+            nameWinner.append(attackRound(ot1, ot2, d, strBResult));
+            if (nameWinner.toString().equals("")) {
+                nameWinner.append(attackRound(ot2, ot1, d, strBResult));
             }
         }
         strBResult.append("\nПобедил ").append(nameWinner);
@@ -86,14 +81,16 @@ public class BattleModelImpl implements BattleModel {
         return strBResult;
     }
 
-    private StringBuilder attackRound(Squad ot1, Squad ot2, DateHelper d) {
+    private String attackRound(Squad ot1, Squad ot2, DateHelper d, StringBuilder strBResult) {
+        String nameWinner = "";
         Warrior w1 = ot1.getRandomWarrior();
         Warrior w2 = ot2.getRandomWarrior();
-        StringBuilder strBResult = new StringBuilder();
         strBResult.append("\nБоец - ").append(w1.toString()).append(" атакует бойца\n       ").append(w2.toString());
         w2.takeDamage(w1.attack());
         d.skipTime();
-        return strBResult;
+        if (!ot2.hasAliveWarriors()) {
+            nameWinner = ot1.toString();
+        }
+        return nameWinner;
     }
-
 }

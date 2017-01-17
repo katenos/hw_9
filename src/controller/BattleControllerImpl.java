@@ -15,21 +15,22 @@ import model.Squad;
  * @author kate_
  */
 public class BattleControllerImpl implements BattleConrtoller {
-
+    
     private BattleModel model;
     private MainFrame view;
     private Squad sq1, sq2;
-
+    
     public BattleControllerImpl(BattleModel model) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
         this.model = model;
         view = new MainFrame(this, model);
         sq1 = new Squad("Отряд 1");
         sq2 = new Squad("Отряд 2");
     }
-
+    
     @Override
     public void start(String nameSq1, String nameSq2) {
-        String noError = fieldsFill(nameSq1, nameSq1);       
+        String noError = fieldsFill(nameSq1, nameSq2);        
+        view.changeStartButton(false);
         if (noError.equals("")) {
             view.updateMessage("", "");
             sq1.rename(nameSq1);
@@ -39,9 +40,9 @@ public class BattleControllerImpl implements BattleConrtoller {
             model.start(sq1, sq2);
         } else {
             view.updateMessage("", noError);
-        }
+        }        
     }
-
+    
     @Override
     public void addWarrior(String nameWarrior, int ind, String typeWarrior) {
         String msg = "", error = "";
@@ -54,12 +55,12 @@ public class BattleControllerImpl implements BattleConrtoller {
         }
         view.updateMessage(msg, error);
     }
-
+    
     @Override
     public String[] getTypeWarrior() {
         return model.getTypeWarrior();
     }
-
+    
     private Squad getSelectedSquad(int ind) {
         if (ind == 0) {
             return sq1;
@@ -67,23 +68,22 @@ public class BattleControllerImpl implements BattleConrtoller {
             return sq2;
         }
     }
-
+    
     private String fieldsFill(String nameSq1, String nameSq2) {
-        StringBuilder error=new StringBuilder();
-        //зачем тут switch?
+        StringBuilder error = new StringBuilder();        
         if (nameSq1.equals("")) {
             error.append("Введите имя первого отряда. ");            
         }
         if (nameSq2.equals("")) {
-             error.append("Введите имя второго отряда. ");
+            error.append("Введите имя второго отряда. ");
         }
         if (sq1.getSquad().size() == 0) {
-             error.append("В первом отряде нет бойцов! ");
+            error.append("В первом отряде нет бойцов! ");
         }
         if (sq2.getSquad().size() == 0) {
-             error.append("Во втором отряде нет бойцов! ");
+            error.append("Во втором отряде нет бойцов! ");
         }
         return error.toString();
     }
-
+    
 }

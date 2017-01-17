@@ -12,7 +12,7 @@ import java.util.Random;
  *
  * @author kate_
  */
-public class Squad{
+public class Squad {
 
     private String name;
     private ArrayList<Warrior> squad = new ArrayList<Warrior>();
@@ -60,4 +60,17 @@ public class Squad{
     public String toString() {
         return this.name;
     }
+
+    @Override
+    public Squad clone() throws CloneNotSupportedException { //странно что неправильное клонирование было, я видимо случайно не из того проекта скопировала его
+        //т.к. в hw_4_2 клонирование работает верно
+        Squad clone = (Squad) super.clone();
+        ArrayList<Warrior> arWarrior = new ArrayList<Warrior>();
+        for (int i = 0; i < squad.size(); i++) {
+            arWarrior.add(squad.get(i).clone());
+        }
+        clone.squad = arWarrior;
+        return clone;
+    }
+
 }

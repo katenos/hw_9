@@ -35,4 +35,8 @@ public abstract class Warrior{
     public void setName(String name) {
         this.warriorName = name;
     } 
+     @Override
+    public Warrior clone() throws CloneNotSupportedException {       
+        return (Warrior) super.clone();
+    }
 }

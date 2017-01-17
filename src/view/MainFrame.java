@@ -53,14 +53,17 @@ public class MainFrame extends JFrame implements BattleObserver {
     }
 
     @Override
-    public void updateResult(String output) {
-        start.setEnabled(false);
+    public void updateResult(String output) {        
         resultArea.setText(output);
     }
 
     public void updateMessage(String msg, String errorMsg) {
         message.setText(msg);
         error.setText(errorMsg);
+    }
+    
+    public void changeStartButton(boolean enabled){
+        start.setEnabled(enabled);
     }
 
     private void createView() throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
